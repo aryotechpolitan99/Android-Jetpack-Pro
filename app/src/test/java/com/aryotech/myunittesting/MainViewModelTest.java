@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class MainViewModelTest {
 
@@ -30,32 +32,26 @@ public class MainViewModelTest {
     }
 
     @Test
-    public void getCircumference() {
-
-        cuboiModel = new CuboiModel();
-        mainViewModel = new MainViewModel(cuboiModel);
-        mainViewModel.save(dummyWidth, dummyLength, dummyHeight);
+    public void testMockCircumference() {
+        when(mainViewModel.getCircumference()).thenReturn(dummyCircumference);
         double volume = mainViewModel.getCircumference();
+        verify(cuboiModel).getCircumference();
         assertEquals(dummyCircumference, volume, 0.0001);
     }
 
     @Test
-    public void getSurfaceArea() {
-
-        cuboiModel = new CuboiModel();
-        mainViewModel = new MainViewModel(cuboiModel);
-        mainViewModel.save(dummyWidth, dummyLength, dummyHeight);
+    public void testMockSurfaceArea() {
+        when(mainViewModel.getSurfaceArea()).thenReturn(dummySurfaceArea);
         double volume = mainViewModel.getSurfaceArea();
+        verify(cuboiModel).getSurfaceArea();
         assertEquals(dummySurfaceArea, volume, 0.0001);
     }
 
     @Test
-    public void getVolume() {
-
-        cuboiModel = new CuboiModel();
-        mainViewModel = new MainViewModel(cuboiModel);
-        mainViewModel.save(dummyWidth, dummyLength, dummyHeight);
+    public void testMockVolume() {
+        when(mainViewModel.getVolume()).thenReturn(dummyVolume);
         double volume = mainViewModel.getVolume();
+        verify(cuboiModel).getVolume();
         assertEquals(dummyVolume, volume, 0.0001);
     }
 }
